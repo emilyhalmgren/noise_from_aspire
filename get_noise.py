@@ -1,6 +1,7 @@
 from cryosparc.tools import Dataset
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
+import plotext as plt
 
 
 # Load the .cs file
