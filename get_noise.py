@@ -2,6 +2,7 @@ from cryosparc.tools import Dataset
 import pandas as pd
 #import matplotlib.pyplot as plt
 import plotext as plt
+import numpy as np
 
 
 # Load the .cs file
@@ -22,8 +23,6 @@ print(error[:10])
 ncc_score = df["pick_stats/ncc_score"]
 print(ncc_score[:10])   
 
-fit_quality = df["ctf/fit_quality"]
-print(fit_quality[:10])
 
 plt.hist(df["alignments2D/cross_cor"], bins=50)
 plt.xlabel("2D alignment cross-correlation")
@@ -32,20 +31,22 @@ plt.ylabel("Number of particles")
 plt.show()
 
 
-plt.hist(df["alignments2D/error"], bins=50)
-plt.xlabel("Error")
+plt.hist(df["alignments2D/class_posterior"], bins=50)
+plt.xlabel("Probability of assignment to the chosen class")
 plt.ylabel("Number of particles")
 #plt.title("Distribution of per-particle alignment scores")
 plt.show()
 
-plt.hist(df["pick_stats/ncc_score"], bins=50)
-plt.xlabel("NCC Score")
+plt.hist(df["alignments2D/weight"], bins=50)
+plt.xlabel("Weight given by cryoSPARC")
 plt.ylabel("Number of particles")
 #plt.title("Distribution of per-particle alignment scores")
 plt.show()
 
-plt.hist(df["ctf/fit_quality"], bins=50)
-plt.xlabel("Fit Quality")
-plt.ylabel("Number of particles")
-#plt.title("Distribution of per-particle alignment scores")
-plt.show() 
+# Model-vs-residual SNR
+snr_slice = df["alignments2D/slice_pow"] / df["alignments2D/resid_pow"]
+snr_slice = np.clip(snr_slice, 0, None)
+plt.hist(snr_slice, bins=80)
+plt.xlabel("Per-particle SNR (slice/residual)"); plt.ylabel("Count"); plt.title("SNR_slice")
+plt.show()
+
