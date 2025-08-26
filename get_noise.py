@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # Load the .cs file
-ds = Dataset.load("CS-cryosparc-tutorial/J9/J9_020_particles.cs")
+ds = Dataset.load("../CS-cryosparc-tutorial/J9/J9_020_particles.cs")
 
 # Convert to DataFrame manually
 df = pd.DataFrame(ds.rows())
