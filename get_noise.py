@@ -19,3 +19,22 @@ plt.xlabel("2D alignment cross-correlation")
 plt.ylabel("Number of particles")
 plt.title("Distribution of per-particle alignment scores")
 plt.show()
+
+
+plt.hist(df["alignments2D/error"], bins=50)
+plt.xlabel("2D alignment cross-correlation")
+plt.ylabel("Number of particles")
+plt.title("Distribution of per-particle alignment scores")
+plt.show()
+
+plt.hist(df["alignments2D/ncc_score"], bins=50)
+plt.xlabel("2D alignment cross-correlation")
+plt.ylabel("Number of particles")
+plt.title("Distribution of per-particle alignment scores")
+plt.show()
+
+plt.hist(df["alignments2D/fit_quality"], bins=50)
+plt.xlabel("2D alignment cross-correlation")
+plt.ylabel("Number of particles")
+plt.title("Distribution of per-particle alignment scores")
+plt.show()
