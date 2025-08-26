@@ -17,11 +17,13 @@ print(df.columns)  # show some column names
 cross_corr = df["alignments2D/cross_cor"]
 print(cross_corr[:10])
 
-error = df["alignments2D/error"]
-print(error[:10])
+class_posterior = df["alignments2D/class_posterior"]
+print(class_posterior[:10])
 
-ncc_score = df["pick_stats/ncc_score"]
-print(ncc_score[:10])   
+weight = df["alignments2D/weight"]
+print(weight[:10])
+
+ 
 
 plt.subplots(2, 2)
 
@@ -45,6 +47,7 @@ plt.ylabel("Number of particles")
 
 # Model-vs-residual SNR
 snr_slice = df["alignments2D/slice_pow"] / df["alignments2D/resid_pow"]
+print(snr_slice[:10])
 snr_slice = np.clip(snr_slice, 0, None)
 plt.subplot(4)
 plt.hist(snr_slice, bins=80)
